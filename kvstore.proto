@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package kvstore;
+
+// Defines the service
+service KVStore {
+
+rpc GET (GetRequest) returns (CommonReply) {}
+rpc PUT (PutRequest) returns (CommonReply) {}
+rpc DEL (DeleteRequest) returns (CommonReply) {}
+
+}
+
+
+message GetRequest {
+    string key =1;
+}
+
+message CommonReply {
+    string value =1; 
+    int32 status = 2;
+    string errorDescription = 3;
+}
+
+message PutRequest {
+    string key = 1;
+    string value = 2;
+}
+
+message PutReply {
+    int32 status = 1;
+    string errorDescription = 2;
+
+}
+
+message DeleteRequest {
+     string key = 1;
+ }
+
+message DeleteReply {
+    int32 status = 1;
+    string errorDescription = 2;
+}
+
